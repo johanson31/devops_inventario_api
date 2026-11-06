@@ -11,9 +11,11 @@ from logging.handlers import RotatingFileHandler
 from . import config
 
 _PATRONES_SECRETOS = [
-    re.compile(r"(Bearer\s+)[A-Za-z0-9\-._~+/=]+", re.IGNORECASE),
-    re.compile(r"((?:api[_-]?key|access_token|token|x-api-key)[\"']?\s*[:=]\s*[\"']?)[^\s\"',}]+",
-               re.IGNORECASE),
+    # Solo se enmascaran valores con forma de secreto (8+ caracteres seguros),
+    # así no se alteran mensajes como "Sin token: [401]".
+    re.compile(r"(Bearer\s+)[A-Za-z0-9\-._~+/=]{8,}", re.IGNORECASE),
+    re.compile(r"((?:api[_-]?key|access_token|token|x-api-key)[\"']?\s*[:=]\s*[\"']?)"
+               r"[A-Za-z0-9\-._~+/=]{8,}", re.IGNORECASE),
 ]
 
 
