@@ -1,0 +1,17 @@
+# --- Secretos: nunca al repositorio ---
+.env
+certs/*.key
+certs/*.crt
+# --- Artefactos generados en ejecución ---
+logs/
+reportes/
+*.pid
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+# --- Editores / SO ---
+.vscode/
+.idea/
+*.swp
+.DS_Store
