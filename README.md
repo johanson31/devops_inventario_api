@@ -206,3 +206,25 @@ token, TLS sin CA, reintentos ante 503) y enmascarado de secretos en logs.
 - Los logs enmascaran tokens y claves.
 - `./scripts/auditar_permisos.sh` verifica todo lo anterior.
 
+## Flujo de trabajo con Git
+
+- `main`: versiones estables y etiquetadas (`v1.0.0`, `v2.0.0`, `v2.0.1`, `v2.0.2`).
+- `develop`: integración.
+- `feature/*`: una rama por funcionalidad; `hotfix/*`: correcciones urgentes.
+- Integración con `merge --no-ff` y commits convencionales (`feat`, `fix`, `test`, `ops`, `docs`).
+
+```bash
+git log --oneline --graph --all
+git tag -n
+```
+
+## Solución de problemas
+
+| Síntoma | Solución |
+|---|---|
+| `No se pudo conectar con https://localhost:8443` | La API no está corriendo: `./scripts/api.sh iniciar` |
+| `La API no respondió` | Falta `.env` o el certificado: `./scripts/setup_entorno.sh`; revisar `logs/api_consola.log` |
+| `certificate verify failed` | Usar la CA del proyecto: `--cacert certs/servidor.crt` |
+| HTTP 403 `API key inválida` | Se regeneró `.env` con la API corriendo: reiniciarla |
+| `setgid no aplicado en logs/` | El grupo `netops` aún no está activo en la sesión: `newgrp netops` o volver a iniciar sesión |
+| `api-externa` sin conexión | Verificar Internet de la VM: `curl -I https://httpbin.org` |
