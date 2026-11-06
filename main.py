@@ -215,7 +215,9 @@ def cmd_api_externa(args) -> int:
                                json={"nombre": "R01", "ip": "192.168.1.1"} if metodo == "POST" else None)
             if r.ok:
                 cuerpo = r.json()
-                extracto = cuerpo.get("json") or {k: cuerpo[k] for k in list(cuerpo)[:2]}
+                # nunca se imprime el token, aunque el servicio lo devuelva en eco
+                extracto = cuerpo.get("json") or {k: v for k, v in list(cuerpo.items())[:2]
+                                                  if "token" not in k.lower()}
                 print("✓ {:<34} HTTP {} {}".format(titulo, r.status_code, extracto))
             else:
                 print("✗ {:<34} HTTP {} -> {}".format(titulo, r.status_code,
