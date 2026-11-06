@@ -1,0 +1,19 @@
+# Inventario de la sede Arequipa (formato YAML)
+inventario:
+  sede: Arequipa
+  dispositivos:
+    - nombre: R10
+      ip: 10.20.0.1
+      tipo: Router
+      estado: Activo
+      ubicacion: Arequipa
+    - nombre: S10
+      ip: 10.20.0.2
+      tipo: Switch
+      estado: Inactivo
+      ubicacion: Arequipa
+    - nombre: AP10
+      ip: 10.20.0.50
+      tipo: AccessPoint
+      estado: Activo
+      ubicacion: Arequipa

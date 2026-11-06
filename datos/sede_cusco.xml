@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inventario sede="Cusco">
+  <dispositivo>
+    <nombre>R30</nombre>
+    <ip>10.40.0.1</ip>
+    <tipo>Router</tipo>
+    <estado>Activo</estado>
+  </dispositivo>
+  <dispositivo estado="Inactivo">
+    <nombre>AP30</nombre>
+    <ip>10.40.0.60</ip>
+    <tipo>AccessPoint</tipo>
+  </dispositivo>
+</inventario>
