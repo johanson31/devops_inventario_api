@@ -1,0 +1,3 @@
+# Versiones mínimas probadas (incluidas en la VM DEVASC, Python 3.8)
+requests>=2.22
+PyYAML>=5.3

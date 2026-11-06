@@ -1,0 +1,4 @@
+nombre,ip,tipo,estado,ubicacion
+R20,10.30.0.1,Router,Activo,Trujillo
+S20,10.30.0.2,switch,activo,Trujillo
+SRV20,10.30.0.10,Servidor,Inactivo,Trujillo
