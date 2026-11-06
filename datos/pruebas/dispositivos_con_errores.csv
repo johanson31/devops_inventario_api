@@ -1,0 +1,8 @@
+nombre,ip,tipo,estado,ubicacion
+R01,192.168.1.1,Router,Activo,Lima
+R99,192.168.1.300,Router,Activo,Lima
+S99,192.168.1.2,Switch,Activo,Lima
+R01,192.168.1.77,Router,Activo,Lima
+SRV99,192.168.1.99,Mainframe,Activo,Lima
+AP99,,AccessPoint,Activo,Lima
+FW99,192.168.1.98,Firewall,Apagado,Lima

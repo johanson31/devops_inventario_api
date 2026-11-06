@@ -1,0 +1,12 @@
+{
+  "inventario": {
+    "sede": "Lima",
+    "dispositivos": [
+      {"nombre": "R01", "ip": "192.168.1.1", "tipo": "Router", "estado": "Activo", "ubicacion": "Lima"},
+      {"nombre": "S01", "ip": "192.168.1.2", "tipo": "Switch", "estado": "Activo", "ubicacion": "Lima"},
+      {"nombre": "R02", "ip": "192.168.1.4", "tipo": "Router", "estado": "Activo", "ubicacion": "Lima"},
+      {"nombre": "SRV01", "ip": "192.168.1.10", "tipo": "Servidor", "estado": "Activo", "ubicacion": "Lima"},
+      {"nombre": "FW01", "ip": "192.168.1.254", "tipo": "Firewall", "estado": "Activo", "ubicacion": "Lima"}
+    ]
+  }
+}
