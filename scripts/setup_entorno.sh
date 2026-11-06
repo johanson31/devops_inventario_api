@@ -77,6 +77,12 @@ aplicar_permisos() {
     [[ -f "$PROYECTO/certs/servidor.key" ]] && chmod 600 "$PROYECTO/certs/servidor.key"
     # logs/ y reportes/: setgid -> lo que se cree dentro hereda el grupo
     chmod 2770 "$PROYECTO/logs" "$PROYECTO/reportes"
+    # El kernel descarta el setgid en silencio si quien ejecuta chmod no es root
+    # y no tiene activo el grupo del directorio (usermod -aG exige nueva sesión).
+    if [[ ! -g "$PROYECTO/logs" ]]; then
+        echo "  [AVISO] setgid no aplicado en logs/: el grupo $(stat -c %G "$PROYECTO/logs") no está"
+        echo "          activo en esta sesión. Use 'newgrp $GRUPO', vuelva a iniciar sesión o ejecute con sudo."
+    fi
     ok "Permisos aplicados"
 }
 
@@ -91,6 +97,7 @@ configurar_equipo() {
     usermod -aG "$GRUPO" "$USUARIO_SERVICIO"
     usermod -aG "$GRUPO" "$PROPIETARIO"
     chown -R "$PROPIETARIO:$GRUPO" "$PROYECTO"
+    echo "  Nota: $PROPIETARIO debe cerrar sesión (o usar 'newgrp $GRUPO') para activar el grupo."
     # el home del propietario debe permitir "atravesarlo" para que el grupo llegue al proyecto
     ok "Miembros de $GRUPO: $(getent group "$GRUPO" | cut -d: -f4)"
 }
